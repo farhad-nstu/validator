@@ -1,23 +1,27 @@
 <?php
 namespace FarhadNstu\Validator\Controllers;
 
-use Illuminate\Http\Request;
 use FarhadNstu\Validator\Validator;
 
 class ValidatorController
 {
     public function __invoke(Validator $validator) {
-        $results = $validator->make(['name','age'], [
-            'name' => 'required',
+        $request = [
+            'name' => 'farhadghqwera',
+            'age' => 'fdgf',
+            'dob' => '1996-10-01',
+            'email' => 'farhad@gmail.com',
+            'address' => 'fdgfgfghfghfg'
+        ];
+
+        $results = $validator->make($request, [
+            'name' => 'required|min:8|max:12',
             'email' => 'required',
             'dob' => 'required',
-            'age' => 'required'
+            'age' => 'required|numeric',
+            'address' => 'digits_between:5,8|dfg'
         ]);
-        // if(count($results) > 0) {
-        //     return $results; 
-        // }
-        // $quote = $validator->justDoIt();
-        // return view('inspire::index', compact('results'));
+
         if($validator->fails()) {
             // to get all generated errors
             foreach ($validator->errors() as $error) {
@@ -26,6 +30,7 @@ class ValidatorController
 
             // to get the first error
             // echo $validator->errorFirst();
+            return ;
         }
         if($validator->passed()){
             return "proceed to the next...";
