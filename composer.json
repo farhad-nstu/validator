@@ -1,0 +1,17 @@
+{
+    "name": "farhad-nstu/validator",
+    "description": "Laravel Validation Package",
+    "autoload": {
+        "psr-4": {
+            "FarhadNstu\\Validator\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "farhad-nstu",
+        "email": "amfarhad33@gmail.com"
+    }],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "^7.0.1"
+    }
+}
